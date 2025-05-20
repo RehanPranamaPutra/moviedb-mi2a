@@ -20,15 +20,16 @@ class MovieFactory extends Factory
     {
         $title = fake()->sentence(rand(3,6));
         $slug = Str::slug($title);
+
         return [
             'title' => $title,
             'slug' => $slug,
             'synopsis' => fake()->paragraph(rand(5,10)),
-            'category_id' => Category::inRandomOrder()->first(),
+            'category_id' => Category::inRandomOrder()->value('id'), // ✅ ambil ID, bukan object
             'year' => fake()->year(),
-            'actors' =>fake()->name() . ', ' . fake('id')->name(),
+            'actors' => fake()->name() . ', ' . fake('id')->name(),
             'cover_image' => 'https://picsum.photos/seed/' . Str::random(10) . '/480/640',
-            'create_at' => now(),
+            'created_at' => now(), // ✅ perbaiki di sini
             'updated_at' => now()
         ];
     }
