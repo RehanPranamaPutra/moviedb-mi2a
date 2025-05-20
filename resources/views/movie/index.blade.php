@@ -68,23 +68,8 @@
                             <div>
                                 <h5 class="card-title">{{ $movie->title }}</h5>
                                 <p class="card-text">{{ Str::words($movie->synopsis,20, '...') }}</p>
-                                <a href="" class="btn btn-success">Read More</a>
+                                <a href="/movie/{{ $movie->id }}/{{ $movie->slug }}" class="btn btn-success">Read More</a>
                             </div>
-
-
-                            {{-- Tombol aksi --}}
-                            {{-- <div class="mt-3 d-flex justify-content-end">
-                                <a href="#" class="btn btn-sm btn-warning me-2">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form action="#" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

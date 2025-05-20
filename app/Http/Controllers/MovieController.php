@@ -37,4 +37,11 @@ class MovieController extends Controller
         Movie::crete($validate);
         return redirect()->route('movie.index');
     }
+
+    public function detail($id, $slug)
+    {
+        $movie = Movie::find($id);
+        $category = Category::all();
+        return view('movie.detailmovie',compact('movie','category'));
+    }
 }
