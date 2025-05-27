@@ -32,9 +32,12 @@
         </div>
     </main>
 
-    <div class="bg-success text-white text-center">
+    <footer>
+         <div class="bg-success text-white text-center">
         Copyright &copy; 2025 - Manajemen Informatika 2A
     </div>
+    </footer>
+
 
     <!-- Bootstrap 5 JS Bundle CDN (sudah termasuk Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

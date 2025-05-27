@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/category',CategoryController::class);
 Route::get('/',[MovieController::class,'index'])->name('movie.index');
 Route::get('/movie/create',[MovieController::class,'create'])->name('movie.create');
-Route::post('/movie/add',[MovieController::class,'add'])->name('movie.add');
+Route::post('/movie',[MovieController::class,'add'])->name('movie.add');
 
 Route::get('/movie/{id}/{slug}',[MovieController::class,'detail']);

@@ -16,32 +16,45 @@ class MovieController extends Controller
     }
 
     public function create(){
-        $categorys = Category::all();
-        return view('movie.create',compact('categorys'));
+        $categories = Category::all();
+        return view('movie.create',compact('categories'));
     }
 
     public function add(Request $request){
 
         $validate = $request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'synopsis' => 'required',
-            'category_id' => 'required|exists:categorys,id',
-            'year' => 'required',
-            'actors' => 'required',
-            'cover_image' => 'required'
+            'title' => 'required|string|max:255',
+            'synopsis' => 'required|nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'year' => 'required|integer|min:1950|max:' . date('Y'),
+            'actors' => 'required|string',
+            'cover_image' => 'nullable|image|mimes:jpg,webp,jpeg'
         ]);
 
-        $validate['slug'] = Str::slug($request->title);
+        $slug = Str::slug($request->title);
+        $cover = null;
+        if($request->hasFile('cover_image')){
+            $cover = $request->file('cover_image')->store('covers','public');
+        }
+        // simpan ke table
 
-        Movie::crete($validate);
-        return redirect()->route('movie.index');
+        Movie::create([
+            'title' => $validate['title'],
+            'slug' => $slug,
+            'synopsis' => $validate['synopsis'],
+            'category_id' => $validate['category_id'],
+            'year' => $validate['year'],
+            'actors' => $validate['actors'],
+            'cover_image' => $cover,
+
+        ]);
+        return redirect()->route('movie.index')->with('success','MOvie saved successfuly');
     }
 
     public function detail($id, $slug)
     {
         $movie = Movie::find($id);
-        $category = Category::all();
+        $category = Category::pluck('category_name');
         return view('movie.detailmovie',compact('movie','category'));
     }
 }

@@ -43,6 +43,12 @@
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 text-warning">🎞️ Movie List</h1>
+        @if (session('success'))
+            <div class="alert alert-succes alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <a href="{{ route('movie.create') }}" class="btn btn-primary">
             <i class="fas fa-plus-circle"></i> Add Movie
         </a>
@@ -53,7 +59,7 @@
                     <div class="card flex-md-row shadow-sm h-100">
                         {{-- Gambar --}}
                         @if($movie->cover_image)
-                            <img src="{{ $movie->cover_image }}"
+                            <img src="{{ asset('storage/' . $movie->cover_image) }}"
                                  class="img-fluid rounded-start"
                                  alt="{{ $movie->title }}"
                                  style="width: 200px; object-fit: cover;">

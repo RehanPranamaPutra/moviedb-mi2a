@@ -5,10 +5,10 @@
                     <div class="card flex-md-row shadow-sm ">
                         {{-- Gambar --}}
                         @if($movie->cover_image)
-                            <img src="{{ $movie->cover_image }}"
+                            <img src="{{ asset('storage/' . $movie->cover_image) }}"
                                  class="img-fluid rounded-start"
                                  alt="{{ $movie->title }}"
-                                 >
+                                 style="width: 200px; object-fit: cover;">
                         @else
                             <div class="d-flex align-items-center justify-content-center bg-secondary text-white" style="width: 200px; height: 100%;">
                                 <span>No Image</span>

@@ -48,7 +48,6 @@
         <div class="card-body">
             <form action="{{ route('movie.add') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
                 {{-- Title --}}
                 <div class="mb-3">
                     <label for="title" class="form-label">Movie Title</label>
@@ -79,7 +78,7 @@
                     <label for="category_id" class="form-label">Category</label>
                     <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
                         <option value="">-- Select Category --</option>
-                        @foreach ($categorys as $category)
+                        @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                 {{ $category->category_name }}
@@ -134,7 +133,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">
+                <button type="submit" name="submit" class="btn btn-primary w-100">
                     <i class="fas fa-save"></i> Save Movie
                 </button>
             </form>

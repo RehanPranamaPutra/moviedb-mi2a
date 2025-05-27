@@ -19,7 +19,7 @@
                         <a class="nav-link @yield('navDosen')" href="{{ route('movie.index') }}">Movie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @yield('navProdi')" href="">Prodi</a>
+                        <a class="nav-link @yield('navProdi')" href="{{ route('movie.create') }}">Input Movie</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
