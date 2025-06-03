@@ -12,19 +12,46 @@
                     <li class="nav-item">
                         <a class="nav-link @yield('navHome')"  href="">Home</a>
                     </li>
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link @yield('navCategory')"  href="{{ route('category.index') }}">Category</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('navDosen')" href="{{ route('movie.index') }}">Movie</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link @yield('navProdi')" href="{{ route('movie.create') }}">Input Movie</a>
                     </li>
+                    <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">  {{ Auth::user()->name }} </a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <div>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item bg-transparent border-0 p-0 m-0" style="color: #212529;">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </div>
+                    </ul>
+                    </div>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link @yield('navProdi')" href="{{ route('login') }}">Login</a>
+                    </li>
+                    @endauth
                 </ul>
+
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-ligth text-white " type="submit">Search</button>
+                    <button class="btn btn-outline-ligth text-center text-white " type="submit">Search</button>
                 </form>
             </div>
         </div>
