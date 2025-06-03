@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 
+=======
+# Nama  : Rehan Pranama Putra
+# NIM   : 2301092030
+# Kelas : MI 2A
+>>>>>>> 62df40fb54ac78a76d42f1a847f826fbc22e9b54
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
