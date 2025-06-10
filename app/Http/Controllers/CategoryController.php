@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -59,11 +60,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->category_name = $request->category_name;
-        $category->description = $request->description;
-        $category->update();
+        if(Gate::allows('edit')){
+            $category->category_name = $request->category_name;
+            $category->description = $request->description;
+            $category->update();
 
-        return redirect()->route('category.index');
+            return redirect()->route('category.index');
+        }
+        abort(403);
     }
 
     /**
@@ -71,7 +75,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect()->route('category.index');
+        if(Gate::allows('delete')){
+            $category->delete();
+            return redirect()->route('category.index');
+        }
+        abort(403);
     }
 }

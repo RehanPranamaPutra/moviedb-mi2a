@@ -34,12 +34,15 @@
                             <td>{{ $category->description }}</td>
                             <td>
                                 <div class="d-flex gap-2">
+                                    @can('edit')
                                     <a href="{{ route('category.edit',$category->id) }}"
                                        class="btn btn-sm btn-warning"
                                        title="Edit"
                                        data-bs-toggle="tooltip">
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                    @endcan
+                                    @can('delete')
                                     <form action="{{ route('category.destroy',$category->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
@@ -51,6 +54,7 @@
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
+                                    @endcan
                                 </div>
                             </td>
                         </tr>
