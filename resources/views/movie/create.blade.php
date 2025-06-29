@@ -1,56 +1,26 @@
 @extends('layouts.main')
 @section('title', 'Add Movie')
 @section('content')
-<style>
-    body {
-        background-color: #1c1c1c;
-        color: #f5f5f5;
-    }
-    .form-label {
-        font-weight: bold;
-        color: #ffc107;
-    }
-    .card {
-        background-color: #2c2c2c;
-        color: #fff;
-        border: none;
-    }
-    .form-control,
-    .form-select {
-        background-color: #3a3a3a;
-        border: 1px solid #555;
-        color: #fff;
-    }
-    .form-control::placeholder {
-        color: #999;
-    }
-    .btn-primary {
-        background-color: #ffc107;
-        border: none;
-        color: #000;
-        font-weight: bold;
-    }
-    .btn-primary:hover {
-        background-color: #e0a800;
-    }
-    .invalid-feedback {
-        color: #ff6b6b;
-    }
-</style>
 
 <div class="container py-5">
     <div class="text-center mb-4">
-        <h1 class="display-6 text-warning">🎬 Add New Movie</h1>
+        <h1 class="display-6 text-warning fw-bold">🎬 Add New Movie</h1>
         <p class="text-muted">Fill in the details to list a new movie</p>
     </div>
+    <div class="mb-3">
+        <a href="{{ route('movie.data') }}"
+           class="btn btn-secondary d-inline-flex align-items-center gap-2 px-4 py-2 rounded-3 shadow-sm">
+           <i class="bi bi-film"></i> Lihat Data Movie
+        </a>
+    </div>
 
-    <div class="card shadow-lg mx-auto" style="max-width: 700px;">
-        <div class="card-body">
-            <form action="{{ route('movie.add') }}" method="POST" enctype="multipart/form-data">
+    <div class="card shadow-lg mx-auto border-0" style="max-width: 700px; background: #232323;">
+        <div class="card-body p-4">
+            <form action="{{ route('movie.add') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 {{-- Title --}}
                 <div class="mb-3">
-                    <label for="title" class="form-label">Movie Title</label>
+                    <label for="title" class="form-label fw-semibold">Movie Title</label>
                     <input type="text"
                            name="title"
                            class="form-control @error('title') is-invalid @enderror"
@@ -63,7 +33,7 @@
 
                 {{-- Synopsis --}}
                 <div class="mb-3">
-                    <label for="synopsis" class="form-label">Synopsis</label>
+                    <label for="synopsis" class="form-label fw-semibold">Synopsis</label>
                     <textarea name="synopsis"
                               class="form-control @error('synopsis') is-invalid @enderror"
                               rows="4"
@@ -75,7 +45,7 @@
 
                 {{-- Category --}}
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Category</label>
+                    <label for="category_id" class="form-label fw-semibold">Category</label>
                     <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
                         <option value="">-- Select Category --</option>
                         @foreach ($categories as $category)
@@ -92,12 +62,12 @@
 
                 {{-- Year --}}
                 <div class="mb-3">
-                    <label for="year" class="form-label">Release Year</label>
+                    <label for="year" class="form-label fw-semibold">Release Year</label>
                     <input type="number"
                            name="year"
                            class="form-control @error('year') is-invalid @enderror"
                            value="{{ old('year') }}"
-                           placeholder="e.g. 2024">
+                           placeholder="e.g. 2024" min="1900" max="{{ date('Y') }}">
                     @error('year')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -105,7 +75,7 @@
 
                 {{-- Actors --}}
                 <div class="mb-3">
-                    <label for="actors" class="form-label">Actor(s)</label>
+                    <label for="actors" class="form-label fw-semibold">Actor(s)</label>
                     <input type="text"
                            name="actors"
                            class="form-control @error('actors') is-invalid @enderror"
@@ -117,8 +87,8 @@
                 </div>
 
                 {{-- Cover Image --}}
-                <div class="mb-3">
-                    <label for="cover_image" class="form-label">Cover Image</label>
+                <div class="mb-4">
+                    <label for="cover_image" class="form-label fw-semibold">Cover Image</label>
                     <input type="file"
                            name="cover_image"
                            accept="image/*"
@@ -129,11 +99,11 @@
                     @enderror
 
                     <div class="mt-3 text-center">
-                        <img id="imagePreview" src="#" alt="Image Preview" class="img-thumbnail d-none" style="max-height: 250px;">
+                        <img id="imagePreview" src="#" alt="Image Preview" class="img-thumbnail d-none" style="max-height: 250px; background: #222;">
                     </div>
                 </div>
 
-                <button type="submit" name="submit" class="btn btn-primary w-100">
+                <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fs-5 shadow">
                     <i class="fas fa-save"></i> Save Movie
                 </button>
             </form>

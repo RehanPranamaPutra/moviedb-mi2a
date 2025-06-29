@@ -20,6 +20,41 @@
         main>.container {
             padding: 60px 15px 0;
         }
+        body {
+        background-color: #3a3a3a;
+        color: #f5f5f5;
+    }
+    .btn-primary {
+        background-color: #ffc107;
+        border: none;
+
+        font-weight: bold;
+    }
+    .btn-warning {
+        background-color: #ffca2c;
+        border: none;
+
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+    .card {
+        background-color: #2c2c2c;
+        border: none;
+        color: #fff;
+    }
+    .card-title {
+        color: #ffc107;
+    }
+    .card-text {
+        color: #ccc;
+    }
+    .alert-info {
+        background-color: #343a40;
+        border-color: #ffc107;
+        color: #ffc107;
+    }
     </style>
 </head>
 

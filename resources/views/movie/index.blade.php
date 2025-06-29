@@ -3,41 +3,7 @@
 @section('content')
 
 <style>
-    body {
-        background-color: #1c1c1c;
-        color: #f5f5f5;
-    }
-    .btn-primary {
-        background-color: #ffc107;
-        border: none;
-        color: #000;
-        font-weight: bold;
-    }
-    .btn-warning {
-        background-color: #ffca2c;
-        border: none;
-        color: #000;
-    }
-    .btn-danger {
-        background-color: #dc3545;
-        border: none;
-    }
-    .card {
-        background-color: #2c2c2c;
-        border: none;
-        color: #fff;
-    }
-    .card-title {
-        color: #ffc107;
-    }
-    .card-text {
-        color: #ccc;
-    }
-    .alert-info {
-        background-color: #343a40;
-        border-color: #ffc107;
-        color: #ffc107;
-    }
+    
 </style>
 
 <div class="container py-4">
